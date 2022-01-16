@@ -3,14 +3,14 @@
     <h2>notable</h2>
     <h3>Physicians</h3>
     <ul>
-      <li *ngFor="let physician of Physicians; let i= index" (click)="physicianClicked(physician.physicianid)">
+      <li *ngFor="let physician of physicians; let i= index" (click)="physicianClicked(physician.physicianid)">
           {{physician.lastName}},{{physician.name}}
       </li>
     </ul>
   </div>
   <div class="content-container">
       <div class="header-container">
-         <h2>{{physician.name}} {{[physician.lastName}}</h2>
+         <h2>{{currentPhysicianName}} {{currentPhysicianLastName}}</h2>
       </div>
       <div class="grid-container">
           <div class="grid-header">
@@ -19,11 +19,11 @@
               <div>Time</div>
               <div>Kind</div>
           </div>
-          <div class="grid-row" *ngFor="let appointment of Appointments, let j= index">
+          <div class="grid-row" *ngFor="let appointment of appointments, let j= index">
                 <div>{{j}}</div>
-                <div>{{appointment.patient.name}} {{appointemtn.patient.lastName}}</div>
-                <div>{{appointment.scheduledTime}}</div>
-                <div>{{appointment.kindOfPatient}}</div>
+                <div>{{appointment?.patient.name}} {{appointment?.patient?.lastName}}</div>
+                <div>{{appointment?.scheduledTime}}</div>
+                <div>{{appointment?.kindOfPatient}}</div>
           </div>
       </div>
   </div>

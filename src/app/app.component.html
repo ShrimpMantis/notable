@@ -1,9 +1,10 @@
 <div class="container">
   <div class="side-nav-container">
-    <h2>notable</h2>
+    <h2>Notable</h2>
     <h3>Physicians</h3>
-    <ul>
-      <li *ngFor="let physician of physicians; let i= index" (click)="physicianClicked(physician.physicianid)">
+    <ul class="side-nav-list-container">
+      <li  class="side-nav-pill" *ngFor="let physician of physicians; let i= index" 
+          (click)="physicianClicked(physician.physicianId)" [id]="i" [ngClass]="{'highlight-cell': i ===chosenIndex}">
           {{physician.lastName}},{{physician.name}}
       </li>
     </ul>
@@ -14,16 +15,19 @@
       </div>
       <div class="grid-container">
           <div class="grid-header">
-              <div>#</div>
-              <div>Name</div>
-              <div>Time</div>
-              <div>Kind</div>
+              <div class="grid-header-cell">#</div>
+              <div class="grid-header-cell">Name</div>
+              <div class="grid-header-cell">Time</div>
+              <div class="grid-header-cell">Kind</div>
           </div>
           <div class="grid-row" *ngFor="let appointment of appointments, let j= index">
-                <div>{{j}}</div>
-                <div>{{appointment?.patient.name}} {{appointment?.patient?.lastName}}</div>
-                <div>{{appointment?.scheduledTime}}</div>
-                <div>{{appointment?.kindOfPatient}}</div>
+                <div class="grid-cell">{{j}}</div>
+                <div class="grid-cell">
+                    <span class="grid-cell-content-wrapper">{{appointment?.patient.name}}</span> 
+                    <span class="grid-cell-content-wrapper">{{appointment?.patient?.last}}</span>
+                  </div>
+                <div class="grid-cell">{{appointment?.scheduledTime | date:'fullDate'}}</div>
+                <div class="grid-cell">{{appointment?.kindOfPatient}}</div>
           </div>
       </div>
   </div>
